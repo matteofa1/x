@@ -1,4 +1,5 @@
 import scrapy
+from scrapy.crawler import CrawlerProcess
 
 # class Producto:
 #     name = ""
@@ -14,18 +15,20 @@ class QuotesSpider(scrapy.Spider):
     def parse(self, response):
         print(response.url)
         marca  = response.url.split("/")[2]
+        precio = []
         print(marca)
         if marca == "www.maskota.com.mx":
             print("entre a mascota")
             quote = response.css('div.detallesProducto')[0]
             lista = quote.css('div.precio')
-            precio = lista.css('strong.skuBestPrice::text').extract_first()
+            precio.append = lista.css('strong.skuBestPrice::text').extract_first()
             print(precio);
         else:
             print("entre a petco: " + marca)
-            precio = response.css(".variant_price span::text").extract_first() 
-            print(precio)
-
+            tPrecio = response.css(".variant_price span::text").extract_first() 
+            print(tPrecio)
+            precio.append = tPrecio
+        return precio
 
 #class QuotesSpider(scrapy.Spider):
     #name = "lol"

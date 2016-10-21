@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template
 from forms.forms import ProductoForm 
-from quotes_spider import QuotesSpider 
+from  import QuotesSpider 
 import pyrebase
 
 def firebaseObject():
@@ -32,7 +32,7 @@ def scrapy():
 	formulario = ProductoForm()
 	if formulario.validate_on_submit():
 		competencia = QuotesSpider(scrapy.Spider)
-		data = competencia{"nombre":formulario.producto.data}
+		data = {"nombre":formulario.producto.data}
 		return data
 
 
