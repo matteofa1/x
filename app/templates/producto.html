@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+{% block info %}
+	<form method="POST">
+		{{form.csrf_token}}
+		{{form.nombre}}
+		{{form.precio}}
+		<input type="submit" value="Guardar">
+	</form>
+	{% for product in data %}
+		<a href="/producto/{{product}}">cat </a>
+	{% endfor %}
+{% endblock info %}
